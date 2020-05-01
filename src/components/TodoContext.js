@@ -1,4 +1,5 @@
-import React,{useState, createContext} from 'react'
+import React,{useState, useEffect, createContext} from 'react'
+import axios from 'axios'
 
 export const TodoContext = createContext()
 
@@ -7,17 +8,18 @@ export function TodoProvider(props) {
     const [todos, setTodos] = useState([
         {
             id: 1,
-            title: "Programmers count from Zero"
-        },
-        {
-            id: 2,
-            title: "It has CRUD functionality."
-        },
-        {
-            id: 3,
-            title: "It's a todo list app"
+            title: "Loading..."
         }
     ])
+
+    useEffect(() => {
+        // console.log(todos);
+        axios.get('https://shielded-island-06481.herokuapp.com/api/todos')
+        .then((res) => {
+            setTodos(res.data)
+        })
+        
+    }, [])
 
     return (
         <TodoContext.Provider value={[todos, setTodos]}>

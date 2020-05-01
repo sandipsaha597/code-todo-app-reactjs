@@ -41,11 +41,6 @@ function Todo() {
     const ripple2 = (e) => {
         let x = e.clientX - e.target.getBoundingClientRect().left,
         y = e.clientY - e.target.getBoundingClientRect().top
-        
-        // console.log("ripple", x, y);
-        
-        console.log("ripple", e.clientX, e.clientY);
-        console.log("ripple offset", e.target.offsetLeft, e.target.offsetTop);
 
         let ripples = document.createElement('span');
         btn2.appendChild(ripples)
